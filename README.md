@@ -288,7 +288,7 @@ We welcome contributions from the community! Please read our [Contributing Guide
 
 ## 🐛 Bug Reports & Feature Requests
 
-Found a bug or have a feature request? Please check the [existing issues](https://github.com/yourusername/Inventory-Billing-Management-System/issues) first, then feel free to [open a new issue](https://github.com/yourusername/Inventory-Billing-Management-System/issues/new).
+Found a bug or have a feature request? Please check the [existing issues](https://github.com/janvi100104/Inventory-Billing-Management-System/issues) first, then feel free to [open a new issue](https://github.com/100104/Inventory-Billing-Management-System/issues/new).
 
 ### Issue Templates
 
@@ -338,8 +338,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 💬 Support
 
 For support, please:
-1. Check the [Documentation](https://github.com/yourusername/Inventory-Billing-Management-System/wiki)
-2. Search [existing issues](https://github.com/yourusername/Inventory-Billing-Management-System/issues)
+1. Check the [Documentation](https://github.com/janvi100104Inventory-Billing-Management-System/wiki)
+2. Search [existing issues](https://github.com/janvi100104/Inventory-Billing-Management-System/issues)
 3. Join our [Discord community](https://discord.gg/yourdiscord)
 4. Email us at support@yourdomain.com
 
