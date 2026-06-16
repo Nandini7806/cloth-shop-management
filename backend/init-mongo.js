@@ -24,4 +24,4 @@ db.transactions.createIndex({ businessId: 1, type: 1, date: -1 });
 db.transactions.createIndex({ businessId: 1, customerId: 1 });
 db.transactions.createIndex({ businessId: 1, vendorId: 1 });
 
-print('Database initialization completed.');
+print('Cloth Shop Management database initialization completed.');

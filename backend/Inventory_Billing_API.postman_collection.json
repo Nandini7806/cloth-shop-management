@@ -1,10 +1,10 @@
 {
   "info": {
-    "name": "Inventory & Billing Management API",
-    "description": "Complete API collection for testing the Inventory & Billing Management Backend system",
-    "version": "1.0.0",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
+  "name": "Cloth Shop Management API",
+  "description": "Complete API collection for testing the Cloth Shop Management backend system including authentication, products, customers, vendors, transactions, and reports.",
+  "version": "1.0.0",
+  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
   "auth": {
     "type": "bearer",
     "bearer": [
