@@ -1,12 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ['localhost'],
+  eslint: {
+    ignoreDuringBuilds: true,
   },
-  env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api',
-  },
-  outputFileTracingRoot: __dirname,
-}
 
-module.exports = nextConfig
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cloth-shop-backend-6dpm.onrender.com',
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;

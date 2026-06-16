@@ -1,18 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Layout } from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  ArrowLeft, 
-  Receipt, 
-  User, 
-  Calendar, 
+import {
+  ArrowLeft,
+  Receipt,
+  User,
+  Calendar,
   CreditCard,
   Package,
   FileText
@@ -55,8 +55,11 @@ interface Transaction {
   notes?: string;
 }
 
-export default function TransactionDetailPage({ params }: { params: { id: string } }) {
+export default function TransactionDetailPage() {
   const router = useRouter();
+  const params = useParams<{ id: string }>();
+  const transactionId = params.id;
+
   const [transaction, setTransaction] = useState<Transaction | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -65,8 +68,8 @@ export default function TransactionDetailPage({ params }: { params: { id: string
     const fetchTransaction = async () => {
       try {
         setLoading(true);
-        const response = await api.getTransaction(params.id);
-        
+        const response = await api.getTransaction(transactionId);
+
         if (response.success) {
           setTransaction(response.data.transaction);
         } else {
@@ -80,10 +83,10 @@ export default function TransactionDetailPage({ params }: { params: { id: string
       }
     };
 
-    if (params.id) {
+    if (transactionId) {
       fetchTransaction();
     }
-  }, [params.id]);
+  }, [transactionId]);
 
   const getTypeColor = (type: string) => {
     return type === 'sale' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';

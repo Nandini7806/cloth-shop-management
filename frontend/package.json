@@ -1,14 +1,14 @@
 {
-  "name": "inventory-billing-frontend",
+  "name": "cloth-shop-management-frontend",
   "version": "1.0.0",
-  "description": "Next.js 15 frontend for Inventory & Billing Management System",
+  "description": "Next.js frontend for Cloth Shop Management System",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start --turbopack",
-    "lint": "next lint --turbopack"
-  },
+  "dev": "next dev --turbopack",
+  "build": "next build",
+  "start": "next start",
+  "lint": "eslint ."
+},
   "dependencies": {
     "@hookform/resolvers": "^3.3.0",
     "@radix-ui/react-dialog": "^1.0.5",
@@ -58,6 +58,6 @@
     "shadcn",
     "typescript"
   ],
-  "author": "Siddhartha Kunwar",
+  "author": "Nandini Sahu",
   "license": "ISC"
 }
