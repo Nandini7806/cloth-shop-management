@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
@@ -18,21 +18,27 @@ export default function RegisterPage() {
     password: '',
     businessId: '',
   });
+
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
   const { register, user } = useAuth();
   const router = useRouter();
 
-  // Redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard');
+    }
+  }, [user, router]);
+
   if (user) {
-    router.push('/dashboard');
     return null;
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -44,7 +50,7 @@ export default function RegisterPage() {
     try {
       await register(formData);
     } catch (err: any) {
-      setError(err.message);
+      setError(err.message || 'Registration failed');
     } finally {
       setLoading(false);
     }
@@ -57,14 +63,18 @@ export default function RegisterPage() {
           <Card className="w-full max-w-md shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardHeader className="space-y-1">
               <FadeIn delay={0.4}>
-                <CardTitle className="text-2xl text-center">Create an account</CardTitle>
+                <CardTitle className="text-2xl text-center">
+                  Create an account
+                </CardTitle>
               </FadeIn>
+
               <FadeIn delay={0.5}>
                 <CardDescription className="text-center">
                   Enter your details to create your account
                 </CardDescription>
               </FadeIn>
             </CardHeader>
+
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 {error && (
@@ -74,7 +84,7 @@ export default function RegisterPage() {
                     </Alert>
                   </SlideIn>
                 )}
-                
+
                 <FormFieldAnimation delay={0.6}>
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
@@ -90,7 +100,7 @@ export default function RegisterPage() {
                     />
                   </div>
                 </FormFieldAnimation>
-                
+
                 <FormFieldAnimation delay={0.7}>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
@@ -106,7 +116,7 @@ export default function RegisterPage() {
                     />
                   </div>
                 </FormFieldAnimation>
-                
+
                 <FormFieldAnimation delay={0.8}>
                   <div className="space-y-2">
                     <Label htmlFor="password">Password</Label>
@@ -121,7 +131,7 @@ export default function RegisterPage() {
                     />
                   </div>
                 </FormFieldAnimation>
-                
+
                 <FormFieldAnimation delay={0.9}>
                   <div className="space-y-2">
                     <Label htmlFor="businessId">Business ID</Label>
@@ -137,11 +147,11 @@ export default function RegisterPage() {
                     />
                   </div>
                 </FormFieldAnimation>
-                
+
                 <FormFieldAnimation delay={1.0}>
-                  <Button 
-                    type="submit" 
-                    className="w-full transition-all duration-300 hover:scale-105" 
+                  <Button
+                    type="submit"
+                    className="w-full transition-all duration-300 hover:scale-105"
                     disabled={loading}
                   >
                     {loading ? (
@@ -155,11 +165,14 @@ export default function RegisterPage() {
                   </Button>
                 </FormFieldAnimation>
               </form>
-              
+
               <FadeIn delay={1.1}>
                 <div className="mt-4 text-center text-sm">
                   Already have an account?{' '}
-                  <Link href="/login" className="text-primary hover:underline transition-colors duration-300 hover:scale-105 inline-block">
+                  <Link
+                    href="/login"
+                    className="text-primary hover:underline transition-colors duration-300 hover:scale-105 inline-block"
+                  >
                     Sign in
                   </Link>
                 </div>
